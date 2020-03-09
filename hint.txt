@@ -1,0 +1,30 @@
+deck =new Deck();
+List<Image>list=new List<Image>();
+for(int i=0;i<NUM_CARDS,i++)list.Add(cardImageList.Images[i]);
+deck.AssignImages(list,cardImageList.Images[CARD_BACK]);
+deck.Shuffle();
+cardImages=new Picturebox[NUM_CARDS];
+for(int i=0;i<NUM_CARDS;i++)
+{
+cardImages[i]=new picturebox();
+playcard card=deck.DealTopCard();
+cardImages[i].Tag=card;
+cardImages[i].Size=new size(CARD-WIDTH,CARD_HEIGHT);
+int col=i%NUM_COLS;
+
+int row=i/NUM_COLS;
+cardImages[i].Location=new Point(col+CAED_WIDTH,row);
+cardImages[i].Image=card.GetImage();
+cardImages[i].click+=card_Click;
+Controls.Add(cardImages[i]);
+}
+
+
+card_click(objict sender.EventArgs e):
+PictureBox box=sender as PictureBox;
+PlayingCard card=box.Tag as PlayingCard;
+card.Flip();
+
+box.Iamge=card.GetIamge();
+
+
